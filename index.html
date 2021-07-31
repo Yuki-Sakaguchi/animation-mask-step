@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>animation mask step.</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        background-color: black;
+      }
+      .section {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        grid-template-areas: "box";
+        grid-template-columns: 1fr;
+        height: 100%;
+      }
+      .images-box {
+        -webkit-mask-image: url('assets/images/mask.png');
+        mask-image: url('assets/images/mask.png');
+        -webkit-mask-size: 400% 400%;
+        mask-size: 400% 400%;
+        -webkit-mask-position: 0% 0%;
+        mask-position: 0% 0%;
+      }
+      .images-box.end {
+        -webkit-mask-position: 100% 100%;
+        mask-position: 100% 100%;
+      }
+      .images-box.in {
+        animation: mask-playzero 1s 0s steps(1) forwards;
+      }
+      .images-box.out {
+        animation: mask-playzero 1s 0s steps(1) forwards reverse;
+      }
+      img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+      }
+      @keyframes mask-playzero {
+        0% {
+          -webkit-mask-position: 0% 0%;
+          mask-position: 0% 0%;
+        }
+        10% {
+          -webkit-mask-position: 33.33% 0%;
+          mask-position: 33.33% 0%;
+        }
+        14% {
+          -webkit-mask-position: 66.66% 0%;
+          mask-position: 66.66% 0%;
+        }
+        18% {
+          -webkit-mask-position: 100% 0%;
+          mask-position: 100% 0%;
+        }
+
+        22% {
+          -webkit-mask-position: 0% 33.33%;
+          mask-position: 0% 33.33%;
+        }
+        26% {
+          -webkit-mask-position: 33.33% 33.33%;
+          mask-position: 33.33% 33.33%;
+        }
+        30% {
+          -webkit-mask-position: 66.66% 33.33%;
+          mask-position: 66.66% 33.33%;
+        }
+        35% {
+          -webkit-mask-position: 100% 33.33%;
+          mask-position: 100% 33.33%;
+        }
+
+        40% {
+          -webkit-mask-position: 0% 66.66%;
+          mask-position: 0% 66.66%;
+        }
+        45% {
+          -webkit-mask-position: 33.33% 66.66%;
+          mask-position: 33.33% 66.66%;
+        }
+        50% {
+          -webkit-mask-position: 66.66% 66.66%;
+          mask-position: 66.66% 66.66%;
+        }
+        55% {
+          -webkit-mask-position: 100% 66.66%;
+          mask-position: 100% 66.66%;
+        }
+
+        60% {
+          -webkit-mask-position: 0% 100%;
+          mask-position: 0% 100%;
+        }
+        65% {
+          -webkit-mask-position: 33.33% 100%;
+          mask-position: 33.33% 100%;
+        }
+        70% {
+          -webkit-mask-position: 66.66% 100%;
+          mask-position: 66.66% 100%;
+        }
+        75%,
+        100% {
+          -webkit-mask-position: 100% 100%;
+          mask-position: 100% 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section">
+      <div class="images-box js-hover">
+        <img src="https://source.unsplash.com/960x540/?city,sky" alt="">
+      </div>
+    </section>
+    <script>
+      const hoverEl = document.querySelectorAll('.js-hover');
+      hoverEl.forEach((el) => {
+        el.onmouseover = () => {
+          el.classList.remove('end');
+          el.classList.remove('out');
+          setTimeout(() => {
+            el.classList.add('in');
+          }, 100);
+        };
+        el.onmouseout = () => {
+          el.classList.add('end');
+          el.classList.remove('in');
+          setTimeout(() => {
+            el.classList.add('out');
+          }, 100);
+        };
+      })
+    </script>
+  </body>
+</html>
