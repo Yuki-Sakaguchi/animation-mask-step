@@ -127,19 +127,26 @@
     </section>
     <script>
       const hoverEl = document.querySelectorAll('.js-hover');
+      let isAnimation = false;
       hoverEl.forEach((el) => {
         el.onmouseover = () => {
+          if (isAnimation) return;
+          isAnimation = true;
           el.classList.remove('end');
           el.classList.remove('out');
           setTimeout(() => {
             el.classList.add('in');
+            isAnimation = false;
           }, 100);
         };
         el.onmouseout = () => {
+          if (isAnimation) return;
+          isAnimation = true;
           el.classList.add('end');
           el.classList.remove('in');
           setTimeout(() => {
             el.classList.add('out');
+            isAnimation = false;
           }, 100);
         };
       })
