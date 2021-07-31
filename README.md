@@ -2,6 +2,8 @@
 
 https://yuki-sakaguchi.github.io/animation-mask-step/
 
+![result](https://user-images.githubusercontent.com/16290220/127742109-06097c53-068e-4fc5-8b68-ff78bbf62601.gif)
+
 
 # 解説
 
@@ -12,6 +14,7 @@ https://yuki-sakaguchi.github.io/animation-mask-step/
 
 cssならtransitionで終わらせるか、animationを使いたいならjsでホバーを制御するのが楽っぽい  
 アニメーション自体は１パターン用意して `reverse` で逆再生を再現した。  
+マスクなのでbodyの背景色を白とか好きな色にすればいい感じになる. 
 
 - クラスが何もついていないときはアニメーション前の状態
 - hoverした時に `in` クラスをつけて順当なアニメーションを実行
